@@ -27,3 +27,19 @@ const CharacterSchema = z.object({
   })
 
 export type Character = z.infer<typeof CharacterSchema>
+
+const CharacterCallInfoSchema = z.object({
+    count: z.number(), 
+    next: z.string(), 
+    pages: z.number(), 
+    prev: z.string()
+})
+
+export type CharacterCallInfo = z.infer<typeof CharacterCallInfoSchema>
+
+export const CharacterListSchema = z.object({
+    info: CharacterCallInfoSchema,
+    characters: z.array(CharacterSchema)
+})
+
+export type CharacterList = z.infer<typeof CharacterListSchema>
