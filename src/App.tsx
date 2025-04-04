@@ -1,14 +1,13 @@
+import { Box } from "@chakra-ui/react"
 
-import './App.css'
-import { getCharacterList } from './client/CharacterClient'
 
 function App() {
  
 
   return (
-    <>
+    <Box>
       hello
-    </>
+    </Box>
   )
 }
 
