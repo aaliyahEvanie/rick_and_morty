@@ -4,3 +4,4 @@ Dharma: Rick and Morty Assignment
 
 ## Future Features
 - Dark/Light mode
+
