@@ -1,4 +1,7 @@
 import { extendTheme } from "@chakra-ui/react";
+import { LandingPageTheme } from "../pages/LandingPage/landingPageTheme";
+import { buttonTheme } from "./button";
+import { NavbarComponentTheme } from "@/components/NavbarComponent/navbarComponentTheme";
 
 export const baseTheme = extendTheme({
     styles: {
@@ -16,11 +19,19 @@ export const baseTheme = extendTheme({
     },
     colors: {
        brand: {
-        rmGreen: '#7FC249',
+        rmGreen: {
+            base: '#7FC249',
+            light: '#7fc249b3',
+        },
         rmBlue: '#93D6CF',
         rmYellow: '#CFE155',
         rmDarkGreen: '#004100'
        }
+    },
+    components: {
+        LandingPageTheme,
+        NavbarComponentTheme,
+        Button: buttonTheme
     }
 })
 
