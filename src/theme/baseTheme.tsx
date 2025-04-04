@@ -2,6 +2,9 @@ import { extendTheme } from "@chakra-ui/react";
 import { LandingPageTheme } from "../pages/LandingPage/landingPageTheme";
 import { buttonTheme } from "./button";
 import { NavbarComponentTheme } from "@/components/NavbarComponent/navbarComponentTheme";
+import { CharactersPageTheme } from "@/pages/CharactersPage/charactersPageTheme";
+import { cardTheme } from "./card";
+import { modalTheme } from "./modal";
 
 export const baseTheme = extendTheme({
     styles: {
@@ -12,8 +15,8 @@ export const baseTheme = extendTheme({
                 bgGradient:
                     `linear(to-tr, black, gray.800),
                     linear(to-t, gray.900, gray.300),
-                    linear(to-b, black, gray.50)`
-                  
+                    linear(to-b, black, gray.50)`,
+                color: 'white'
             }
         }
     },
@@ -31,7 +34,10 @@ export const baseTheme = extendTheme({
     components: {
         LandingPageTheme,
         NavbarComponentTheme,
-        Button: buttonTheme
+        CharactersPageTheme,
+        Button: buttonTheme,
+        Card: cardTheme,
+        Modal: modalTheme
     }
 })
 

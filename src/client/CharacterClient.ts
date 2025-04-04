@@ -19,21 +19,17 @@ type CharacterSearchProps = {
     url: string | null,
 }
 
-export const getCharacterList = ({url = null}: CharacterSearchProps): CharacterList  | null => {
+export const getCharacterList = async ({url = null}: CharacterSearchProps): Promise<CharacterList | null> => {
     const apiCall = url ? url : characterUrl
-    const [characters, setCharacters] = useState<CharacterList|null>(null)
+    let data: CharacterList | null = null
     try {
-         fetch(apiCall)
-            .then((response) =>  response.json())
-            .then(data => {
-                setCharacters(data)
-                const extractedData = {
-                    info: data.info, 
-                    characters: data.results
-                }
-                const parsedSchema = CharacterListSchema.parse(extractedData)
-                setCharacters(parsedSchema)
-            })
+         const data = await fetch(apiCall)
+                               .then((response) =>  response.json())
+         const extractedData = {
+            info: data.info, 
+            characters: data.results 
+        }
+        return  CharacterListSchema.parse(extractedData)
     } catch(error){
         if(error instanceof z.ZodError){
             console.error("Validation failed: ", error.issues[0])
@@ -41,7 +37,7 @@ export const getCharacterList = ({url = null}: CharacterSearchProps): CharacterL
             console.error("Unexpected error: ", error)
         }
     }   
-    return characters
+    return data
     
 }
 /**

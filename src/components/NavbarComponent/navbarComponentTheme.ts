@@ -7,6 +7,7 @@ export const NavbarComponentTheme = helper.defineMultiStyleConfig({
         lgHeaderBar: {
             height:'80px',
             position: 'sticky',
+            mb: '150px',
             img: {
                 height: '100px'
             }

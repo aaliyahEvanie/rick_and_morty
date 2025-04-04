@@ -30,9 +30,9 @@ export type Character = z.infer<typeof CharacterSchema>
 
 const CharacterCallInfoSchema = z.object({
     count: z.number(), 
-    next: z.string(), 
+    next: z.string().nullable(), 
     pages: z.number(), 
-    prev: z.string()
+    prev: z.string().nullable()
 })
 
 export type CharacterCallInfo = z.infer<typeof CharacterCallInfoSchema>

@@ -20,9 +20,9 @@ export const NavbarComponent = () => {
       <Box __css={styles.lgHeaderBar}>
         <Box __css={styles.navbar}>
             <Image src={portal}/>
-            <Button variant={currentPage.includes('adventure') ? 'navItem': 'link'}>Characters</Button>
-            <Button variant={currentPage.includes('Locations') ? 'active': 'link'}>Locations</Button>
-            <Button variant={currentPage.includes('Episodes') ? 'active': 'link'}>Episodes</Button>
+            <Button variant={currentPage.includes('characters') ? 'navItem': 'link'}>Characters</Button>
+            <Button variant={currentPage.includes('locations') ? 'active': 'link'}>Locations</Button>
+            <Button variant={currentPage.includes('episodes') ? 'active': 'link'}>Episodes</Button>
         </Box>
         
       </Box>
