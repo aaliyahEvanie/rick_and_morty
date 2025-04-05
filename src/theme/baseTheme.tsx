@@ -11,12 +11,14 @@ export const baseTheme = extendTheme({
         global: {
             body: {
                 h: '100vh',
-                backgroundSize: 'cover',
+               
                 bgGradient:
                     `linear(to-tr, black, gray.800),
                     linear(to-t, gray.900, gray.300),
                     linear(to-b, black, gray.50)`,
-                color: 'white'
+                color: 'white',
+                backgroundSize: '100% 1000vh',
+                backgroundRepeat: 'repeat-y'
             }
         }
     },

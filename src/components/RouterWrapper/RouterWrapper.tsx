@@ -4,9 +4,9 @@ import { NavbarComponent } from "../NavbarComponent/NavbarComponent"
 
 export const RouterWrapper = () => {
    return( 
-    <Box>
+    <>
         <NavbarComponent/>
         <Outlet/>
-    </Box>
+    </>
    )
 }

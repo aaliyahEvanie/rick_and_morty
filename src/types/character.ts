@@ -6,13 +6,14 @@ type CharacterStatusEnum = z.infer<typeof CharacterStatusEnum>;
 const CharacterGenderEnum = z.enum(['Female', 'Male', 'Genderless', 'unknown']);
 type CharacterGenderEnum = z.infer<typeof CharacterGenderEnum>;
 
-const CharacterSchema = z.object({
+export const CharacterSchema = z.object({
     id: z.number(),
     name: z.string(),
     status:  CharacterStatusEnum,
     species: z.string(),
     type: z.string(),
     gender: CharacterGenderEnum,
+    image: z.string(),
     origin: z.object({
         name: z.string(), 
         url: z.string()

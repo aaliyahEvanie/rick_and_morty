@@ -1,7 +1,7 @@
 import {z} from 'zod'
 import { useEffect, useState } from "react"
 import { apiUrl } from '../const'
-import { CharacterList, CharacterListSchema } from '../types/character'
+import { Character, CharacterList, CharacterListSchema, CharacterSchema } from '../types/character'
 
 const characterUrl = apiUrl + '/character'
 
@@ -44,8 +44,20 @@ export const getCharacterList = async ({url = null}: CharacterSearchProps): Prom
  * GET a character / a batch of characters
  * https://rickandmortyapi.com/api/character/{id} || https://rickandmortyapi.com/api/character/[{id}, {id}]
  */
-export const CharacterDetail = () => {
-    useEffect(()=> {
-
-    })
+export const getCharacterDetails = async ({url = null}: CharacterSearchProps): Promise<Character | null> => {
+    
+        const apiCall = url ? url : characterUrl
+        let data: Character | null = null
+        try {
+             const data = await fetch(apiCall)
+                                   .then((response) =>  response.json())
+            return  CharacterSchema.parse(data)
+        } catch(error){
+            if(error instanceof z.ZodError){
+                console.error("Validation failed: ", error.issues[0])
+            } else {
+                console.error("Unexpected error: ", error)
+            }
+        }   
+    return data
 }
