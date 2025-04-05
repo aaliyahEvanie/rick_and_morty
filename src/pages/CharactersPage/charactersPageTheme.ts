@@ -1,7 +1,14 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 
-const helper = createMultiStyleConfigHelpers([])
+const helper = createMultiStyleConfigHelpers(['cardWrapper', 'paginationWrapper'])
 
 export const CharactersPageTheme = helper.defineMultiStyleConfig({
-    baseStyle: {}
+    baseStyle: {
+        paginationWrapper: {
+            display: 'flex'
+        },
+        cardWrapper: {
+
+        }
+    }
 })

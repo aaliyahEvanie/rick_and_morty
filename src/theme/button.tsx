@@ -13,6 +13,9 @@ export const buttonTheme = defineStyleConfig({
     navItem: {
       bg: 'brand.rmGreen.light',
       color: 'white'
+    }, 
+    pagination: {
+      color: 'brand.rmGreen.base'
     }
   }
 })

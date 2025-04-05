@@ -1,7 +1,9 @@
 import { getCharacterList } from "@/client/CharacterClient"
 import { CharacterCallInfo, CharacterList } from "@/types/character"
-import { Box, Button, useMultiStyleConfig } from "@chakra-ui/react"
+import { Box, Button, Card, useMultiStyleConfig } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
+import { ChevronLeftIcon, ChevronRightIcon} from '@chakra-ui/icons'
+
 
 export const CharactersPage = () => {
     const styles = useMultiStyleConfig('CharactersPageTheme', {})
@@ -20,14 +22,16 @@ export const CharactersPage = () => {
     return (
         <Box __css={styles}>
             <Box> Filter Bar</Box>
-            <Box>
-                <Button>Previous</Button>
+            <Box __css={styles.paginationWrapper}>
+                <Button variant='pagination'><ChevronLeftIcon/> Previous</Button>
+                <Box __css={styles.cardWrapper}>
                     {characters?.characters.map((character, index)=> {
                         return (
-                            <Box key={index}>{character.name}</Box>
+                            <Card key={index}>{character.name}</Card>
                         )
                     })}
-                <Button>Next</Button>
+                </Box>
+                <Button variant='pagination'>Next<ChevronRightIcon/></Button>
             </Box>
         </Box>
     )
