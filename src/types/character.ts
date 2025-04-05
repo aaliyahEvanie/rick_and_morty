@@ -1,10 +1,10 @@
 import { z} from 'zod'
 
-const CharacterStatusEnum = z.enum(['Alive', 'Dead', 'unknown']);
-type CharacterStatusEnum = z.infer<typeof CharacterStatusEnum>;
+export const CharacterStatusEnum = z.enum(['Alive', 'Dead', 'unknown']);
+export type CharacterStatus = z.infer<typeof CharacterStatusEnum>;
 
-const CharacterGenderEnum = z.enum(['Female', 'Male', 'Genderless', 'unknown']);
-type CharacterGenderEnum = z.infer<typeof CharacterGenderEnum>;
+export const CharacterGenderEnum = z.enum(['Female', 'Male', 'Genderless', 'unknown']);
+export type CharacterGender = z.infer<typeof CharacterGenderEnum>;
 
 export const CharacterSchema = z.object({
     id: z.number(),

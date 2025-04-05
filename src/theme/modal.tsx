@@ -10,8 +10,8 @@ const baseStyle = definePartsStyle({
     bg: 'blackAlpha.200', //change the background
   },
   dialog: {
-    borderRadius: 'md',
-    bg: `purple.100`,
+    borderRadius: '12px',
+    bg: `gray.600`,
   },
 })
 
