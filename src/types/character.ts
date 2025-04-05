@@ -44,3 +44,10 @@ export const CharacterListSchema = z.object({
 })
 
 export type CharacterList = z.infer<typeof CharacterListSchema>
+
+
+export const CharacterStatusColorScheme = new Map<string, string>([
+    ['Alive', 'green'], 
+    ['Dead', 'red'], 
+    ['unknown', 'purple']]
+)

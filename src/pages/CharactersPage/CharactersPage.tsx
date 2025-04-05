@@ -1,6 +1,6 @@
 import { getCharacterList, getCharacterDetails } from "@/client/CharacterClient"
-import { Character, CharacterCallInfo, CharacterGenderEnum, CharacterList, CharacterStatusEnum } from "@/types/character"
-import { Box, Button, Card, CardFooter, CardHeader, useMultiStyleConfig, Image, Select, Input, useDisclosure, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react"
+import { Character, CharacterCallInfo, CharacterGenderEnum, CharacterList, CharacterStatusColorScheme, CharacterStatusEnum } from "@/types/character"
+import { Box, Button, Card, CardFooter, CardHeader, useMultiStyleConfig, Image, Select, Input, useDisclosure, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Badge, chakra } from "@chakra-ui/react"
 import { useCallback, useEffect, useState } from "react"
 import { ChevronLeftIcon, ChevronRightIcon} from '@chakra-ui/icons'
 import { DetailModalComponent } from "@/components/DetailModal/DetailModalComponent"
@@ -36,12 +36,13 @@ export const CharactersPage = () => {
         }
     },[])
 
-    const onGetDetails = useCallback((detailsUrl: string) => {
-        getCharacterDetails({url: detailsUrl}).then(data =>{
+    const onGetDetails = (e: any, detailsUrl: string) => {
+       e.preventDefault()
+       getCharacterDetails({url: detailsUrl}).then(data =>{
             setCharacter(data)
             onOpen()
         })
-    },[])
+    }
 
     const onPagnination = (e) => {
         e.preventDefault();
@@ -55,9 +56,9 @@ export const CharactersPage = () => {
     }
 
     return (
-        <Box __css={styles} mx={8} >
+        <Box __css={styles} >
             <Box display='flex' paddingX={4} paddingY={8}>
-                <Box>
+                {/* <Box>
                     <Input placeholder="name" />
                 </Box>
                 <Select>
@@ -77,22 +78,44 @@ export const CharactersPage = () => {
                         <option key={key} value={key}>{key}</option>
                     )}
                     </Select>
-                </Box>
+                </Box> */}
             </Box>
             <Box __css={styles.cardWrapper} 
                         paddingX={12}
                         display='grid' 
                         gridTemplateColumns='repeat(auto-fill, 200px)' 
-                        rowGap={4} columnGap={4}>
+                        rowGap={4} columnGap={8}>
                     {characters?.characters.map((character, index)=> {
                         return (
-                        <Card key={index} borderRadius='12px' padding={4} onClick={() => {onGetDetails(character.url)}}>
-                                <CardHeader>{character.name}</CardHeader>
-                                <CardFooter>
+                        <Card  key={index} direction={{ base: 'column' }} overflow='hidden' 
+                               onClick={(event)=> onGetDetails(event, character.url)}>
+                                <CardHeader>
+                               
+                                <chakra.h3>{character.name}</chakra.h3>
                                 
-                                </CardFooter>
-                                <Image src={character.image}/>
+                                    
+                                </CardHeader>
+                                <Box ml={2}>
+                                    <Box><chakra.span fontWeight='medium'>Gender:</chakra.span> {character.gender}</Box>
+                                    <Box><chakra.span fontWeight='medium'>Origin:</chakra.span> {character.origin.name}</Box>
+                                    <Box><chakra.span fontWeight='medium'>Species: {character.species}</chakra.span></Box>
+                                </Box>
+                                
+                                <Image
+                                    objectFit='cover'
+                                    height='-webkit-fill-available'
+                                    position='relative'
+                                    maxW={{ base: '100%', sm: '200px' }}
+                                    src={character.image}
+                                    alt={character.name}/>
+                                <Box position='absolute' bottom={0} width='100%'>
+                                    <Badge colorScheme={CharacterStatusColorScheme.get(character.status)}>{character.status}</Badge>
+                                </Box>
+                                
+                             
                         </Card>
+
+                        
                         )
                     })}
                 <DetailModalComponent isOpen={isOpen} onClose={onClose} character={character}/>

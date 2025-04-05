@@ -7,25 +7,24 @@ const { definePartsStyle, defineMultiStyleConfig } =
 const baseStyle = definePartsStyle({
   // define the part you're going to style
   container: {
-    backgroundColor: '#e7e7e7',
+    borderRadius: '12px',
+    backgroundColor: 'gray.200',
+    filter:  `drop-shadow(var(--chakra-colors-brand-rmDarkGreen) 8px 7px 10px)`,
+    padding: 0
   },
   header: {
-    paddingBottom: '2px',
+    padding: '0 0 4px 8px',
+    
+    fontWeight:  600
   },
   body: {
-    paddingTop: '2px',
+    
   },
   footer: {
-    paddingTop: '2px',
+    
   },
 })
 
-const sizes = {
-  md: definePartsStyle({
-    container: {
-      borderRadius: '0px',
-    },
-  }),
-}
+const sizes = {}
 
 export const cardTheme = defineMultiStyleConfig({ baseStyle, sizes })

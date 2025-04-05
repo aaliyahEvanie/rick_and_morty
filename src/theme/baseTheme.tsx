@@ -3,8 +3,10 @@ import { LandingPageTheme } from "../pages/LandingPage/landingPageTheme";
 import { buttonTheme } from "./button";
 import { NavbarComponentTheme } from "@/components/NavbarComponent/navbarComponentTheme";
 import { CharactersPageTheme } from "@/pages/CharactersPage/charactersPageTheme";
-import { cardTheme } from "./card";
+
 import { modalTheme } from "./modal";
+import { cardTheme } from "./cardTheme";
+import { badgeTheme } from "./badgeTheme";
 
 export const baseTheme = extendTheme({
     styles: {
@@ -37,6 +39,7 @@ export const baseTheme = extendTheme({
         LandingPageTheme,
         NavbarComponentTheme,
         CharactersPageTheme,
+        Badge: badgeTheme,
         Button: buttonTheme,
         Card: cardTheme,
         Modal: modalTheme
